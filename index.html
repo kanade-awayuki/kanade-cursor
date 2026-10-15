@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>淡雪花奏マウスカーソルの入れ方</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+/* Layout: 空色→ラベンダーの淡いグラデーションに雪の粒。白いシール風カードを縦に並べ、手順は番号の苺バッジで追う。
+   あえてパステルの単一テーマ（ダークでも同じ見た目） */
+:root{
+  color-scheme:light;
+  --sky:#a9d8ec; --lav:#b9c3f2; --pink:#f48fb8; --pink-deep:#e0659a; --pink-soft:#ffe3ef;
+  --cream:#fffafc; --ink:#6b4a63; --ink-soft:#9a7f93; --mint:#8fd6c0; --line:#f6cfe0;
+  --f-pop:"Mochiy Pop One","Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;
+  --f-body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Meiryo",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0}
+html{background:var(--sky)}
+body{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,255,255,.9) 0 1.5px,transparent 2px) 0 0/90px 90px,
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.75) 0 1px,transparent 1.6px) 0 0/60px 60px,
+    linear-gradient(170deg,var(--sky) 0%,#b4cdf0 45%,var(--lav) 100%) fixed;
+  color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.9;font-weight:500;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='40' viewBox='0 0 14 21'%3E%3Cpath d='M1 1 L1 17 L5 13.4 L7.8 19.6 L10.2 18.6 L7.5 12.5 L13 12.5 Z' fill='%23f48fb8' stroke='%23fff' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 1 1,auto;
+}
+.wrap{max-width:720px;margin:0 auto}
+a{color:var(--pink-deep)}
+a:focus-visible,input:focus-visible+label{outline:3px solid var(--pink);outline-offset:2px;border-radius:6px}
+
+/* hero */
+.hero{padding-block:44px 8px;text-align:center;display:grid;gap:10px;justify-items:center;position:relative}
+.ribbon{font-family:var(--f-pop);font-size:13px;letter-spacing:.12em;color:#fff;background:var(--pink);padding:4px 16px 3px;border-radius:999px;
+  box-shadow:0 0 0 3px #fff}
+h1{font-family:var(--f-pop);font-weight:400;margin:6px 0 0;line-height:1.3;text-wrap:balance;
+  font-size:clamp(30px,7vw,48px);color:var(--pink);
+  -webkit-text-stroke:7px #fff;paint-order:stroke fill;
+  filter:drop-shadow(0 3px 0 rgba(150,170,230,.55))}
+h1 small{display:block;font-size:.5em;color:#8fa6e6}
+.lede{max-width:34em;margin:4px 0 0;color:var(--ink);background:rgba(255,255,255,.6);border-radius:16px;padding:10px 16px;font-size:15px}
+.deco{position:absolute;pointer-events:none}
+.deco.s1{top:30px;left:4%;width:30px}.deco.s2{top:70px;right:5%;width:26px}.deco.s3{top:140px;left:9%;width:22px}
+@media (max-width:520px){.deco.s3{display:none}}
+
+/* card */
+.card{background:var(--cream);border-radius:26px;margin-top:22px;padding:24px clamp(18px,4vw,32px);
+  box-shadow:0 0 0 4px #fff,0 0 0 7px var(--line),0 12px 28px rgba(120,130,200,.22)}
+.card h2{font-family:var(--f-pop);font-weight:400;font-size:20px;color:var(--pink-deep);margin:0 0 4px;display:flex;align-items:center;gap:10px;text-wrap:balance}
+.card h2 svg{width:26px;flex:none}
+.card > p{margin:0 0 6px;font-size:15px}
+
+.need{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.need span{background:var(--pink-soft);border-radius:999px;padding:4px 14px;font-size:14px;font-weight:700}
+.need span.no{background:#eef0fb;color:var(--ink-soft);font-weight:500}
+
+/* steps */
+ol.steps{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:18px;counter-reset:s}
+ol.steps > li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:14px}
+ol.steps > li::before{content:counter(s);width:42px;height:46px;display:grid;place-items:center;padding-top:6px;
+  font-family:var(--f-pop);font-size:18px;color:#fff;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 46'%3E%3Cpath d='M15 4c2 2 4 3 6 3s4-1 6-3c1 2 0 4-2 5 6 0 12 4 12 12 0 11-9 21-16 21S5 32 5 21c0-8 6-12 12-12-2-1-3-3-2-5z' fill='%23f48fb8'/%3E%3Cpath d='M15 4c2 2 4 3 6 3s4-1 6-3c1 2 0 4-2 5-2 1-6 1-8 0-2-1-3-3-2-5z' fill='%238fd6c0'/%3E%3Cg fill='%23fff' opacity='.8'%3E%3Ccircle cx='13' cy='20' r='1'/%3E%3Ccircle cx='29' cy='20' r='1'/%3E%3Ccircle cx='17' cy='33' r='1'/%3E%3Ccircle cx='26' cy='34' r='1'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+ol.steps > li > div{min-width:0}
+ol.steps h3{font-family:var(--f-body);font-weight:900;font-size:17.5px;margin:4px 0 2px;color:var(--ink)}
+ol.steps p{margin:0}
+.ui{font-weight:700;color:var(--pink-deep);background:var(--pink-soft);padding:1px 7px;border-radius:7px;white-space:nowrap}
+kbd{font-family:var(--f-body);font-weight:700;font-size:13.5px;background:#fff;border:2px solid #cdd6f6;border-bottom-width:4px;border-radius:8px;padding:0 7px;color:#6d7fc4}
+.hint{margin-top:8px;font-size:14px;color:var(--ink-soft)}
+
+figure{margin:12px 0 0;background:#fff;border-radius:18px;border:2px dashed var(--line);padding:12px;overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:440px}
+figcaption{font-size:13px;color:var(--ink-soft);margin-top:6px;text-align:center}
+.f-t{font-family:var(--f-body);font-size:13px;fill:#6b4a63}
+.f-s{font-family:var(--f-body);font-size:12px;fill:#9a7f93}
+.f-b{font-family:var(--f-body);font-size:13px;fill:#d24f88;font-weight:700}
+
+/* checklist */
+.check{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:14px;padding:0;list-style:none}
+.check li{min-width:0}
+.check input{position:absolute;opacity:0;width:1px;height:1px}
+.check label{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px 12px;font-size:14.5px;line-height:1.4;cursor:pointer;height:100%}
+.check label i{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--pink);display:grid;place-items:center;font-style:normal;color:#fff;font-size:13px}
+.check label small{display:block;font-size:12px;color:var(--ink-soft)}
+.check input:checked+label{background:var(--pink-soft);border-color:var(--pink)}
+.check input:checked+label i{background:var(--pink)}
+.check input:checked+label i::after{content:"✓"}
+.progress{display:flex;align-items:center;gap:12px;margin-top:12px;font-weight:700;font-size:14px}
+.bar{flex:1;height:12px;border-radius:99px;background:#fff;border:2px solid var(--line);overflow:hidden}
+.bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),#f9b6d0);border-radius:99px;transition:width .3s}
+.reset{font:inherit;font-size:13px;background:none;border:0;color:var(--ink-soft);text-decoration:underline;cursor:pointer}
+
+/* notes */
+.notes{display:grid;gap:10px;margin-top:12px}
+.notes div{display:grid;grid-template-columns:30px 1fr;gap:10px;background:#fff;border-radius:16px;padding:12px 14px;font-size:14.5px;line-height:1.75}
+.notes svg{width:26px;margin-top:2px}
+
+footer{text-align:center;margin-top:28px;font-size:12.5px;color:#fff;text-shadow:0 1px 2px rgba(100,110,180,.5);display:grid;gap:4px}
+@media (prefers-reduced-motion:no-preference){
+  .deco{animation:fall 6s ease-in-out infinite alternate}
+  .deco.s2{animation-delay:-2s}.deco.s3{animation-delay:-4s}
+  @keyframes fall{to{transform:translateY(10px) rotate(25deg)}}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="snow" viewBox="0 0 24 24"><g stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></g></symbol>
+    <symbol id="snowp" viewBox="0 0 24 24"><g stroke="#8fa6e6" stroke-width="2" stroke-linecap="round" fill="none"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5"/></g></symbol>
+    <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" fill="#f48fb8"/></symbol>
+    <symbol id="berry" viewBox="0 0 24 26"><path d="M12 7c6 0 9 3 9 7 0 6-5 11-9 11S3 20 3 14c0-4 3-7 9-7z" fill="#f48fb8"/><path d="M7 4c2 1 3 2 5 2s3-1 5-2c0 2-1 3-3 4h-4c-2-1-3-2-3-4z" fill="#8fd6c0"/><g fill="#fff"><circle cx="9" cy="14" r=".9"/><circle cx="15" cy="14" r=".9"/><circle cx="12" cy="19" r=".9"/></g></symbol>
+    <symbol id="bow" viewBox="0 0 28 20"><path d="M14 10L3 3c-2 0-2 14 0 14zM14 10l11-7c2 0 2 14 0 14z" fill="#f48fb8"/><circle cx="14" cy="10" r="3.4" fill="#e0659a"/><circle cx="14" cy="10" r="1.4" fill="#cdb4ff"/></symbol>
+    <symbol id="cur" viewBox="0 0 14 21"><path d="M1 1 L1 17 L5 13.4 L7.8 19.6 L10.2 18.6 L7.5 12.5 L13 12.5 Z" fill="#f48fb8" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+<header class="hero">
+  <svg class="deco s1" viewBox="0 0 24 24"><use href="#snow"/></svg>
+  <svg class="deco s2" viewBox="0 0 24 24"><use href="#snow"/></svg>
+  <svg class="deco s3" viewBox="0 0 24 24"><use href="#snow"/></svg>
+  <span class="ribbon">BOOTH ・ マウスカーソル</span>
+  <h1>淡雪花奏マウスカーソル<small>の入れ方ガイド</small></h1>
+  <p class="lede">買ったカーソル（.ani 15種セット）を、Windows のマウスカーソルに設定する手順です。所要時間は5分くらい。</p>
+</header>
+
+<section class="card" aria-labelledby="h-need">
+  <h2 id="h-need"><svg viewBox="0 0 28 20"><use href="#bow"/></svg>はじめに</h2>
+  <p>このカーソルは <b>.ani（アニメーションカーソル）</b> 形式なので、使えるのは Windows だけです。</p>
+  <div class="need"><span>Windows 11 ○</span><span>Windows 10 ○</span><span class="no">Mac ×</span></div>
+</section>
+
+<section class="card" aria-labelledby="h-steps">
+  <h2 id="h-steps"><svg viewBox="0 0 24 26"><use href="#berry"/></svg>設定のしかた</h2>
+  <ol class="steps">
+    <li><div>
+      <h3>ZIP を展開して、置き場所を決める</h3>
+      <p>BOOTH からダウンロードした ZIP を右クリックして <span class="ui">すべて展開</span>。できたフォルダを、これから動かさない場所に置きます。</p>
+      <p class="hint">おすすめ：「ドキュメント」の中に「カーソル」フォルダを作って入れる。設定したあとでフォルダを消したり移動したりすると、カーソルが元に戻ってしまいます。</p>
+    </div></li>
+
+    <li><div>
+      <h3>「マウスのプロパティ」を開く</h3>
+      <p><kbd>Win</kbd> + <kbd>R</kbd> を押して <b>main.cpl</b> と入力し、<kbd>Enter</kbd>。開いたら上の <span class="ui">ポインター</span> タブを選びます。</p>
+      <p class="hint">または「設定」→ Bluetooth とデバイス → マウス →「マウスの追加設定」からでも開けます。</p>
+      <figure>
+        <svg viewBox="0 0 460 150" role="img" aria-label="ファイル名を指定して実行の画面に main.cpl と入力する図">
+          <rect x="2" y="2" width="456" height="146" rx="12" fill="#fff" stroke="#f6cfe0" stroke-width="2"/>
+          <text class="f-t" x="22" y="30">ファイル名を指定して実行</text>
+          <text class="f-s" x="22" y="62">名前(O):</text>
+          <rect x="92" y="46" width="340" height="30" rx="8" fill="#ffe3ef" stroke="#f48fb8" stroke-width="2"/>
+          <text class="f-b" x="104" y="66">main.cpl</text>
+          <rect x="170" y="56" width="1.6" height="14" fill="#d24f88"/>
+          <rect x="250" y="102" width="80" height="30" rx="8" fill="#f48fb8"/><text x="290" y="122" text-anchor="middle" font-family="Zen Maru Gothic,sans-serif" font-size="13" font-weight="700" fill="#fff">OK</text>
+          <rect x="340" y="102" width="92" height="30" rx="8" fill="#fff" stroke="#e9dbe4" stroke-width="1.5"/><text class="f-s" x="386" y="122" text-anchor="middle">キャンセル</text>
+          <use href="#cur" x="300" y="112" width="16" height="24"/>
+        </svg>
+        <figcaption>Win + R で出てくる小さな画面に「main.cpl」</figcaption>
+      </figure>
+    </div></li>
+
+    <li><div>
+      <h3>1つずつ「参照」でカーソルを当てはめる</h3>
+      <p>「カスタマイズ」の一覧で項目（たとえば <span class="ui">通常の選択</span>）をクリック → <span class="ui">参照</span> → 展開したフォルダから同じ名前のファイルを選んで <span class="ui">開く</span>。これを15種類くり返します。</p>
+      <p class="hint">下のチェックリストで、終わったものに印をつけながら進めると迷いません。</p>
+      <figure>
+        <svg viewBox="0 0 460 260" role="img" aria-label="マウスのプロパティのポインタータブで、通常の選択を選んで参照ボタンを押す図">
+          <rect x="2" y="2" width="456" height="256" rx="12" fill="#fff" stroke="#f6cfe0" stroke-width="2"/>
+          <text class="f-t" x="20" y="28">マウスのプロパティ</text>
+          <text class="f-s" x="22" y="56">ボタン</text>
+          <rect x="62" y="40" width="74" height="24" rx="7" fill="#ffe3ef" stroke="#f48fb8" stroke-width="2"/><text class="f-b" x="74" y="57">ポインター</text>
+          <text class="f-s" x="150" y="56">ポインター オプション</text>
+          <text class="f-s" x="20" y="92">デザイン</text>
+          <rect x="78" y="76" width="230" height="26" rx="7" fill="#fff" stroke="#e9dbe4" stroke-width="1.5"/><text class="f-s" x="90" y="94">(なし)</text>
+          <rect x="318" y="76" width="122" height="26" rx="7" fill="#fff" stroke="#e9dbe4" stroke-width="1.5"/><text class="f-s" x="330" y="94">名前を付けて保存</text>
+          <text class="f-s" x="20" y="126">カスタマイズ</text>
+          <rect x="20" y="134" width="420" height="80" rx="8" fill="#fffafc" stroke="#e9dbe4" stroke-width="1.5"/>
+          <rect x="22" y="136" width="416" height="26" rx="6" fill="#ffe3ef"/>
+          <text class="f-b" x="32" y="154">通常の選択</text>
+          <use href="#cur" x="404" y="139" width="14" height="21"/>
+          <text class="f-t" x="32" y="180">ヘルプの選択</text>
+          <text class="f-t" x="32" y="204">バックグラウンドで作業中</text>
+          <rect x="350" y="222" width="90" height="28" rx="8" fill="#f48fb8"/><text x="395" y="241" text-anchor="middle" font-family="Zen Maru Gothic,sans-serif" font-size="13" font-weight="700" fill="#fff">参照...</text>
+          <use href="#heart" x="330" y="226" width="16" height="16"/>
+        </svg>
+        <figcaption>項目を選んで → 参照… → ファイルを選ぶ、のくり返し</figcaption>
+      </figure>
+    </div></li>
+
+    <li><div>
+      <h3>名前をつけて保存する</h3>
+      <p>15種類ぜんぶ当てはめたら <span class="ui">名前を付けて保存</span> で「淡雪花奏」など好きな名前に。保存しておくと、あとで別のカーソルに変えても「デザイン」のリストから一発で戻せます。</p>
+    </div></li>
+
+    <li><div>
+      <h3>「適用」→「OK」でできあがり</h3>
+      <p>すぐにカーソルが切り替わります。おつかれさまでした！</p>
+    </div></li>
+  </ol>
+</section>
+
+<section class="card" aria-labelledby="h-check">
+  <h2 id="h-check"><svg viewBox="0 0 24 24"><use href="#heart"/></svg>当てはめチェックリスト</h2>
+  <p>Windows の一覧と同じ並び順です。小さい字はファイル側の名前。</p>
+  <ul class="check" id="check">
+    <li><input type="checkbox" id="k1"><label for="k1"><i></i><span>通常の選択</span></label></li>
+    <li><input type="checkbox" id="k2"><label for="k2"><i></i><span>ヘルプの選択</span></label></li>
+    <li><input type="checkbox" id="k3"><label for="k3"><i></i><span>バックグラウンドで作業中<small>バックグラウンドでの作業中</small></span></label></li>
+    <li><input type="checkbox" id="k4"><label for="k4"><i></i><span>待ち状態</span></label></li>
+    <li><input type="checkbox" id="k5"><label for="k5"><i></i><span>領域選択</span></label></li>
+    <li><input type="checkbox" id="k6"><label for="k6"><i></i><span>テキスト選択<small>テキストの選択</small></span></label></li>
+    <li><input type="checkbox" id="k7"><label for="k7"><i></i><span>手書き<small>手描き</small></span></label></li>
+    <li><input type="checkbox" id="k8"><label for="k8"><i></i><span>利用不可</span></label></li>
+    <li><input type="checkbox" id="k9"><label for="k9"><i></i><span>上下に拡大/縮小<small>上下拡大縮小</small></span></label></li>
+    <li><input type="checkbox" id="k10"><label for="k10"><i></i><span>左右に拡大/縮小<small>左右拡大縮小</small></span></label></li>
+    <li><input type="checkbox" id="k11"><label for="k11"><i></i><span>斜めに拡大/縮小 1<small>斜めに拡大縮小１</small></span></label></li>
+    <li><input type="checkbox" id="k12"><label for="k12"><i></i><span>斜めに拡大/縮小 2<small>斜めに拡大縮小２</small></span></label></li>
+    <li><input type="checkbox" id="k13"><label for="k13"><i></i><span>移動</span></label></li>
+    <li><input type="checkbox" id="k14"><label for="k14"><i></i><span>代替選択</span></label></li>
+    <li><input type="checkbox" id="k15"><label for="k15"><i></i><span>リンクの選択</span></label></li>
+  </ul>
+  <div class="progress"><span id="count">0 / 15</span><div class="bar"><b id="fill"></b></div><button class="reset" id="reset" type="button">リセット</button></div>
+  <p class="hint">Windows 11 の一覧の最後にある「場所の選択」「ユーザーの選択」はセットに入っていないので、そのままで大丈夫です。</p>
+</section>
+
+<section class="card" aria-labelledby="h-faq">
+  <h2 id="h-faq"><svg viewBox="0 0 24 24"><use href="#snowp"/></svg>こまったときは</h2>
+  <div class="notes">
+    <div><svg viewBox="0 0 24 26"><use href="#berry"/></svg><span><b>いつのまにか元のカーソルに戻った</b><br>「設定」アプリでカーソルの色やスタイルを変えると外れます。マウスのプロパティの「デザイン」で、保存した名前を選び直せば戻ります。</span></div>
+    <div><svg viewBox="0 0 24 26"><use href="#berry"/></svg><span><b>配信画面に映したい</b><br>OBS などのキャプチャ設定で「カーソルをキャプチャ」をオンにすれば、このカーソルが映ります。配信での使用は OK のカーソルです。</span></div>
+    <div><svg viewBox="0 0 24 26"><use href="#berry"/></svg><span><b>ほかの人に渡したい</b><br>再配布は禁止されています。自分で使う分だけにしてね。</span></div>
+  </div>
+</section>
+
+<footer>
+  <span>商品ページ：<a href="https://kanade-awayuki.booth.pm/items/7063612" target="_blank" rel="noopener" style="color:#fff">淡雪花奏 マウスカーソル（BOOTH）</a></span>
+  <span>このページのカーソルはピンクの矢印になっています</span>
+</footer>
+</div>
+
+<script>
+(function(){
+  const boxes=[...document.querySelectorAll('#check input')];
+  const count=document.getElementById('count'),fill=document.getElementById('fill');
+  const KEY='kanade-cursor-check';
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked)))}catch(e){}}
+  function draw(){const n=boxes.filter(b=>b.checked).length;count.textContent=n+' / 15'+(n===15?' できた！':'');fill.style.width=(n/15*100)+'%'}
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((b,i)=>b.checked=!!s[i])}catch(e){}
+  boxes.forEach(b=>b.addEventListener('change',()=>{save();draw()}));
+  document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);save();draw()});
+  draw();
+})();
+</script>
+</body>
+</html>
